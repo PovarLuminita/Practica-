@@ -1,0 +1,287 @@
+
+Tema2.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         0000001e  00800100  0000019e  00000212  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         0000019e  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .comment      00000030  00000000  00000000  00000230  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000260  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000038  00000000  00000000  000002a0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   000008a4  00000000  00000000  000002d8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 0000071a  00000000  00000000  00000b7c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   000002e3  00000000  00000000  00001296  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000064  00000000  00000000  0000157c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    000003da  00000000  00000000  000015e0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    000000b3  00000000  00000000  000019ba  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000028  00000000  00000000  00001a6d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   8:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  10:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  14:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  18:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  1c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  20:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  24:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  28:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  2c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  30:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  34:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  38:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  3c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  40:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  44:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  48:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  4c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  50:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  54:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  58:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  5c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  60:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  64:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+  74:	11 e0       	ldi	r17, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	ee e9       	ldi	r30, 0x9E	; 158
+  7c:	f1 e0       	ldi	r31, 0x01	; 1
+  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+  80:	05 90       	lpm	r0, Z+
+  82:	0d 92       	st	X+, r0
+  84:	ae 31       	cpi	r26, 0x1E	; 30
+  86:	b1 07       	cpc	r27, r17
+  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+
+0000008a <__do_clear_bss>:
+  8a:	21 e0       	ldi	r18, 0x01	; 1
+  8c:	ae e1       	ldi	r26, 0x1E	; 30
+  8e:	b1 e0       	ldi	r27, 0x01	; 1
+  90:	01 c0       	rjmp	.+2      	; 0x94 <.do_clear_bss_start>
+
+00000092 <.do_clear_bss_loop>:
+  92:	1d 92       	st	X+, r1
+
+00000094 <.do_clear_bss_start>:
+  94:	ae 31       	cpi	r26, 0x1E	; 30
+  96:	b2 07       	cpc	r27, r18
+  98:	e1 f7       	brne	.-8      	; 0x92 <.do_clear_bss_loop>
+  9a:	0e 94 6c 00 	call	0xd8	; 0xd8 <main>
+  9e:	0c 94 cd 00 	jmp	0x19a	; 0x19a <_exit>
+
+000000a2 <__bad_interrupt>:
+  a2:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000a6 <pinSet>:
+void pinToggle(volatile uint8_t *port, uint8_t pin){
+	*port ^=  1 << pin;
+}
+
+void pinSet(volatile uint8_t *port, uint8_t pin){
+	*port |=  1 << pin;
+  a6:	fc 01       	movw	r30, r24
+  a8:	40 81       	ld	r20, Z
+  aa:	21 e0       	ldi	r18, 0x01	; 1
+  ac:	30 e0       	ldi	r19, 0x00	; 0
+  ae:	02 c0       	rjmp	.+4      	; 0xb4 <pinSet+0xe>
+  b0:	22 0f       	add	r18, r18
+  b2:	33 1f       	adc	r19, r19
+  b4:	6a 95       	dec	r22
+  b6:	e2 f7       	brpl	.-8      	; 0xb0 <pinSet+0xa>
+  b8:	24 2b       	or	r18, r20
+  ba:	20 83       	st	Z, r18
+  bc:	08 95       	ret
+
+000000be <pinReset>:
+}
+
+void pinReset(volatile uint8_t *port, uint8_t pin){
+  be:	fc 01       	movw	r30, r24
+	*port &=  ~(1 << pin);
+  c0:	90 81       	ld	r25, Z
+  c2:	21 e0       	ldi	r18, 0x01	; 1
+  c4:	30 e0       	ldi	r19, 0x00	; 0
+  c6:	02 c0       	rjmp	.+4      	; 0xcc <pinReset+0xe>
+  c8:	22 0f       	add	r18, r18
+  ca:	33 1f       	adc	r19, r19
+  cc:	6a 95       	dec	r22
+  ce:	e2 f7       	brpl	.-8      	; 0xc8 <pinReset+0xa>
+  d0:	20 95       	com	r18
+  d2:	29 23       	and	r18, r25
+  d4:	20 83       	st	Z, r18
+  d6:	08 95       	ret
+
+000000d8 <main>:
+void pinToggle(volatile uint8_t *port, uint8_t pin);
+void pinSet(volatile uint8_t *port, uint8_t pin);
+void pinReset(volatile uint8_t *port, uint8_t pin);
+
+int main(void)
+{
+  d8:	cf 93       	push	r28
+  da:	df 93       	push	r29
+  dc:	cd b7       	in	r28, 0x3d	; 61
+  de:	de b7       	in	r29, 0x3e	; 62
+  e0:	6e 97       	sbiw	r28, 0x1e	; 30
+  e2:	0f b6       	in	r0, 0x3f	; 63
+  e4:	f8 94       	cli
+  e6:	de bf       	out	0x3e, r29	; 62
+  e8:	0f be       	out	0x3f, r0	; 63
+  ea:	cd bf       	out	0x3d, r28	; 61
+	//Initialize peripherals. Set all ports as outputs
+	DDRB = 0xFF;
+  ec:	8f ef       	ldi	r24, 0xFF	; 255
+  ee:	84 b9       	out	0x04, r24	; 4
+	DDRD = 0xFF;
+  f0:	8a b9       	out	0x0a, r24	; 10
+
+	//Set the output value of the ports to low
+	PORTB = 0x00;
+  f2:	15 b8       	out	0x05, r1	; 5
+	PORTD = 0x00;
+  f4:	1b b8       	out	0x0b, r1	; 11
+
+	volatile uint8_t* vector_port[] =  {&PORT_LED0,
+  f6:	84 e1       	ldi	r24, 0x14	; 20
+  f8:	e0 e0       	ldi	r30, 0x00	; 0
+  fa:	f1 e0       	ldi	r31, 0x01	; 1
+  fc:	de 01       	movw	r26, r28
+  fe:	11 96       	adiw	r26, 0x01	; 1
+ 100:	01 90       	ld	r0, Z+
+ 102:	0d 92       	st	X+, r0
+ 104:	8a 95       	dec	r24
+ 106:	e1 f7       	brne	.-8      	; 0x100 <main+0x28>
+										&PORT_LED6,
+										&PORT_LED7,
+										&PORT_LED8,
+										&PORT_LED9};
+	
+	uint8_t vector_pini[] ={PIN_LED0,
+ 108:	8a e0       	ldi	r24, 0x0A	; 10
+ 10a:	e4 e1       	ldi	r30, 0x14	; 20
+ 10c:	f1 e0       	ldi	r31, 0x01	; 1
+ 10e:	de 01       	movw	r26, r28
+ 110:	55 96       	adiw	r26, 0x15	; 21
+ 112:	01 90       	ld	r0, Z+
+ 114:	0d 92       	st	X+, r0
+ 116:	8a 95       	dec	r24
+ 118:	e1 f7       	brne	.-8      	; 0x112 <main+0x3a>
+							PIN_LED7,
+							PIN_LED8,
+							PIN_LED9};
+	
+
+	pinSet(&PORT_LED0, PIN_LED0);
+ 11a:	64 e0       	ldi	r22, 0x04	; 4
+ 11c:	8b e2       	ldi	r24, 0x2B	; 43
+ 11e:	90 e0       	ldi	r25, 0x00	; 0
+ 120:	0e 94 53 00 	call	0xa6	; 0xa6 <pinSet>
+	//Main loop of the application.
+	do{
+		
+		for(int i = 1; i <= 10; i++)
+ 124:	01 e0       	ldi	r16, 0x01	; 1
+ 126:	10 e0       	ldi	r17, 0x00	; 0
+ 128:	34 c0       	rjmp	.+104    	; 0x192 <main+0xba>
+		{
+			pinSet(vector_port[i], vector_pini[i]);
+ 12a:	a5 e1       	ldi	r26, 0x15	; 21
+ 12c:	b0 e0       	ldi	r27, 0x00	; 0
+ 12e:	ac 0f       	add	r26, r28
+ 130:	bd 1f       	adc	r27, r29
+ 132:	a0 0f       	add	r26, r16
+ 134:	b1 1f       	adc	r27, r17
+ 136:	f8 01       	movw	r30, r16
+ 138:	ee 0f       	add	r30, r30
+ 13a:	ff 1f       	adc	r31, r31
+ 13c:	81 e0       	ldi	r24, 0x01	; 1
+ 13e:	90 e0       	ldi	r25, 0x00	; 0
+ 140:	8c 0f       	add	r24, r28
+ 142:	9d 1f       	adc	r25, r29
+ 144:	e8 0f       	add	r30, r24
+ 146:	f9 1f       	adc	r31, r25
+ 148:	6c 91       	ld	r22, X
+ 14a:	80 81       	ld	r24, Z
+ 14c:	91 81       	ldd	r25, Z+1	; 0x01
+ 14e:	0e 94 53 00 	call	0xa6	; 0xa6 <pinSet>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 152:	9f e1       	ldi	r25, 0x1F	; 31
+ 154:	21 ea       	ldi	r18, 0xA1	; 161
+ 156:	87 e0       	ldi	r24, 0x07	; 7
+ 158:	91 50       	subi	r25, 0x01	; 1
+ 15a:	20 40       	sbci	r18, 0x00	; 0
+ 15c:	80 40       	sbci	r24, 0x00	; 0
+ 15e:	e1 f7       	brne	.-8      	; 0x158 <main+0x80>
+ 160:	00 c0       	rjmp	.+0      	; 0x162 <main+0x8a>
+ 162:	00 00       	nop
+			_delay_ms(50000);
+			pinReset(vector_port[i-1], vector_pini[i-1]);
+ 164:	c8 01       	movw	r24, r16
+ 166:	01 97       	sbiw	r24, 0x01	; 1
+ 168:	a5 e1       	ldi	r26, 0x15	; 21
+ 16a:	b0 e0       	ldi	r27, 0x00	; 0
+ 16c:	ac 0f       	add	r26, r28
+ 16e:	bd 1f       	adc	r27, r29
+ 170:	a8 0f       	add	r26, r24
+ 172:	b9 1f       	adc	r27, r25
+ 174:	88 0f       	add	r24, r24
+ 176:	99 1f       	adc	r25, r25
+ 178:	e1 e0       	ldi	r30, 0x01	; 1
+ 17a:	f0 e0       	ldi	r31, 0x00	; 0
+ 17c:	ec 0f       	add	r30, r28
+ 17e:	fd 1f       	adc	r31, r29
+ 180:	e8 0f       	add	r30, r24
+ 182:	f9 1f       	adc	r31, r25
+ 184:	6c 91       	ld	r22, X
+ 186:	80 81       	ld	r24, Z
+ 188:	91 81       	ldd	r25, Z+1	; 0x01
+ 18a:	0e 94 5f 00 	call	0xbe	; 0xbe <pinReset>
+
+	pinSet(&PORT_LED0, PIN_LED0);
+	//Main loop of the application.
+	do{
+		
+		for(int i = 1; i <= 10; i++)
+ 18e:	0f 5f       	subi	r16, 0xFF	; 255
+ 190:	1f 4f       	sbci	r17, 0xFF	; 255
+ 192:	0b 30       	cpi	r16, 0x0B	; 11
+ 194:	11 05       	cpc	r17, r1
+ 196:	4c f2       	brlt	.-110    	; 0x12a <main+0x52>
+ 198:	c5 cf       	rjmp	.-118    	; 0x124 <main+0x4c>
+
+0000019a <_exit>:
+ 19a:	f8 94       	cli
+
+0000019c <__stop_program>:
+ 19c:	ff cf       	rjmp	.-2      	; 0x19c <__stop_program>

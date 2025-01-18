@@ -1,0 +1,292 @@
+
+Timer_Tema.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000000  00800100  00800100  00000264  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         000001f0  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          00000006  00800100  00800100  00000264  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000264  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000294  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 000000a0  00000000  00000000  000002d4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   000009d0  00000000  00000000  00000374  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 0000071c  00000000  00000000  00000d44  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000458  00000000  00000000  00001460  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000154  00000000  00000000  000018b8  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000477  00000000  00000000  00001a0c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000123  00000000  00000000  00001e83  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000090  00000000  00000000  00001fa6  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+   8:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+   c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  10:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  14:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  18:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  1c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  20:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  24:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  28:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  2c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  30:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  34:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  38:	0c 94 48 00 	jmp	0x90	; 0x90 <__vector_14>
+  3c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  40:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  44:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  48:	0c 94 6a 00 	jmp	0xd4	; 0xd4 <__vector_18>
+  4c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  50:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  54:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  58:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  5c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  60:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  64:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_clear_bss>:
+  74:	21 e0       	ldi	r18, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	01 c0       	rjmp	.+2      	; 0x7e <.do_clear_bss_start>
+
+0000007c <.do_clear_bss_loop>:
+  7c:	1d 92       	st	X+, r1
+
+0000007e <.do_clear_bss_start>:
+  7e:	a6 30       	cpi	r26, 0x06	; 6
+  80:	b2 07       	cpc	r27, r18
+  82:	e1 f7       	brne	.-8      	; 0x7c <.do_clear_bss_loop>
+  84:	0e 94 e5 00 	call	0x1ca	; 0x1ca <main>
+  88:	0c 94 f6 00 	jmp	0x1ec	; 0x1ec <_exit>
+
+0000008c <__bad_interrupt>:
+  8c:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000090 <__vector_14>:
+	{
+		USART_Transmit(*string);
+		string++;
+	}
+	
+}
+  90:	1f 92       	push	r1
+  92:	0f 92       	push	r0
+  94:	0f b6       	in	r0, 0x3f	; 63
+  96:	0f 92       	push	r0
+  98:	11 24       	eor	r1, r1
+  9a:	8f 93       	push	r24
+  9c:	9f 93       	push	r25
+  9e:	80 91 03 01 	lds	r24, 0x0103	; 0x800103 <contor_led>
+  a2:	90 91 04 01 	lds	r25, 0x0104	; 0x800104 <contor_led+0x1>
+  a6:	01 97       	sbiw	r24, 0x01	; 1
+  a8:	90 93 04 01 	sts	0x0104, r25	; 0x800104 <contor_led+0x1>
+  ac:	80 93 03 01 	sts	0x0103, r24	; 0x800103 <contor_led>
+  b0:	89 2b       	or	r24, r25
+  b2:	49 f4       	brne	.+18     	; 0xc6 <__vector_14+0x36>
+  b4:	81 e0       	ldi	r24, 0x01	; 1
+  b6:	80 93 02 01 	sts	0x0102, r24	; 0x800102 <flag>
+  ba:	88 ee       	ldi	r24, 0xE8	; 232
+  bc:	93 e0       	ldi	r25, 0x03	; 3
+  be:	90 93 04 01 	sts	0x0104, r25	; 0x800104 <contor_led+0x1>
+  c2:	80 93 03 01 	sts	0x0103, r24	; 0x800103 <contor_led>
+  c6:	9f 91       	pop	r25
+  c8:	8f 91       	pop	r24
+  ca:	0f 90       	pop	r0
+  cc:	0f be       	out	0x3f, r0	; 63
+  ce:	0f 90       	pop	r0
+  d0:	1f 90       	pop	r1
+  d2:	18 95       	reti
+
+000000d4 <__vector_18>:
+  d4:	1f 92       	push	r1
+  d6:	0f 92       	push	r0
+  d8:	0f b6       	in	r0, 0x3f	; 63
+  da:	0f 92       	push	r0
+  dc:	11 24       	eor	r1, r1
+  de:	8f 93       	push	r24
+  e0:	80 91 c6 00 	lds	r24, 0x00C6	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7f80c6>
+  e4:	80 93 05 01 	sts	0x0105, r24	; 0x800105 <data>
+  e8:	81 e0       	ldi	r24, 0x01	; 1
+  ea:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__DATA_REGION_ORIGIN__>
+  ee:	8f 91       	pop	r24
+  f0:	0f 90       	pop	r0
+  f2:	0f be       	out	0x3f, r0	; 63
+  f4:	0f 90       	pop	r0
+  f6:	1f 90       	pop	r1
+  f8:	18 95       	reti
+
+000000fa <init_data>:
+  fa:	88 ee       	ldi	r24, 0xE8	; 232
+  fc:	93 e0       	ldi	r25, 0x03	; 3
+  fe:	90 93 04 01 	sts	0x0104, r25	; 0x800104 <contor_led+0x1>
+ 102:	80 93 03 01 	sts	0x0103, r24	; 0x800103 <contor_led>
+ 106:	08 95       	ret
+
+00000108 <port_init>:
+ 108:	8f ef       	ldi	r24, 0xFF	; 255
+ 10a:	84 b9       	out	0x04, r24	; 4
+ 10c:	15 b8       	out	0x05, r1	; 5
+ 10e:	9f e7       	ldi	r25, 0x7F	; 127
+ 110:	97 b9       	out	0x07, r25	; 7
+ 112:	18 b8       	out	0x08, r1	; 8
+ 114:	8a b9       	out	0x0a, r24	; 10
+ 116:	1b b8       	out	0x0b, r1	; 11
+ 118:	08 95       	ret
+
+0000011a <timer0_init>:
+ 11a:	84 b5       	in	r24, 0x24	; 36
+ 11c:	82 60       	ori	r24, 0x02	; 2
+ 11e:	84 bd       	out	0x24, r24	; 36
+ 120:	85 b5       	in	r24, 0x25	; 37
+ 122:	83 60       	ori	r24, 0x03	; 3
+ 124:	85 bd       	out	0x25, r24	; 37
+ 126:	89 ef       	ldi	r24, 0xF9	; 249
+ 128:	87 bd       	out	0x27, r24	; 39
+ 12a:	ee e6       	ldi	r30, 0x6E	; 110
+ 12c:	f0 e0       	ldi	r31, 0x00	; 0
+ 12e:	80 81       	ld	r24, Z
+ 130:	82 60       	ori	r24, 0x02	; 2
+ 132:	80 83       	st	Z, r24
+ 134:	08 95       	ret
+
+00000136 <init_devices>:
+ 136:	f8 94       	cli
+ 138:	0e 94 84 00 	call	0x108	; 0x108 <port_init>
+ 13c:	0e 94 8d 00 	call	0x11a	; 0x11a <timer0_init>
+ 140:	78 94       	sei
+ 142:	08 95       	ret
+
+00000144 <USART_Init>:
+ 144:	90 93 c5 00 	sts	0x00C5, r25	; 0x8000c5 <__TEXT_REGION_LENGTH__+0x7f80c5>
+ 148:	80 93 c4 00 	sts	0x00C4, r24	; 0x8000c4 <__TEXT_REGION_LENGTH__+0x7f80c4>
+ 14c:	a1 ec       	ldi	r26, 0xC1	; 193
+ 14e:	b0 e0       	ldi	r27, 0x00	; 0
+ 150:	1c 92       	st	X, r1
+ 152:	e2 ec       	ldi	r30, 0xC2	; 194
+ 154:	f0 e0       	ldi	r31, 0x00	; 0
+ 156:	10 82       	st	Z, r1
+ 158:	8c 91       	ld	r24, X
+ 15a:	88 65       	ori	r24, 0x58	; 88
+ 15c:	8c 93       	st	X, r24
+ 15e:	80 81       	ld	r24, Z
+ 160:	86 64       	ori	r24, 0x46	; 70
+ 162:	80 83       	st	Z, r24
+ 164:	83 b7       	in	r24, 0x33	; 51
+ 166:	81 7f       	andi	r24, 0xF1	; 241
+ 168:	83 bf       	out	0x33, r24	; 51
+ 16a:	78 94       	sei
+ 16c:	08 95       	ret
+
+0000016e <pinToggle>:
+ 16e:	fc 01       	movw	r30, r24
+ 170:	40 81       	ld	r20, Z
+ 172:	21 e0       	ldi	r18, 0x01	; 1
+ 174:	30 e0       	ldi	r19, 0x00	; 0
+ 176:	02 c0       	rjmp	.+4      	; 0x17c <pinToggle+0xe>
+ 178:	22 0f       	add	r18, r18
+ 17a:	33 1f       	adc	r19, r19
+ 17c:	6a 95       	dec	r22
+ 17e:	e2 f7       	brpl	.-8      	; 0x178 <pinToggle+0xa>
+ 180:	24 27       	eor	r18, r20
+ 182:	20 83       	st	Z, r18
+ 184:	08 95       	ret
+
+00000186 <aprinde_led_mesaj>:
+ 186:	80 91 01 01 	lds	r24, 0x0101	; 0x800101 <flag_mesaj>
+ 18a:	81 30       	cpi	r24, 0x01	; 1
+ 18c:	39 f4       	brne	.+14     	; 0x19c <aprinde_led_mesaj+0x16>
+ 18e:	61 e0       	ldi	r22, 0x01	; 1
+ 190:	85 e2       	ldi	r24, 0x25	; 37
+ 192:	90 e0       	ldi	r25, 0x00	; 0
+ 194:	0e 94 b7 00 	call	0x16e	; 0x16e <pinToggle>
+ 198:	10 92 01 01 	sts	0x0101, r1	; 0x800101 <flag_mesaj>
+ 19c:	08 95       	ret
+
+0000019e <verificare_rx>:
+ 19e:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
+ 1a2:	81 30       	cpi	r24, 0x01	; 1
+ 1a4:	39 f4       	brne	.+14     	; 0x1b4 <verificare_rx+0x16>
+ 1a6:	60 e0       	ldi	r22, 0x00	; 0
+ 1a8:	85 e2       	ldi	r24, 0x25	; 37
+ 1aa:	90 e0       	ldi	r25, 0x00	; 0
+ 1ac:	0e 94 b7 00 	call	0x16e	; 0x16e <pinToggle>
+ 1b0:	10 92 00 01 	sts	0x0100, r1	; 0x800100 <__DATA_REGION_ORIGIN__>
+ 1b4:	08 95       	ret
+
+000001b6 <USART_Receive>:
+
+void USART_Receive(unsigned char data)
+{
+	/* Wait for data to be received */
+	if(UCSR0A & (1<<RXC0)){
+ 1b6:	80 91 c0 00 	lds	r24, 0x00C0	; 0x8000c0 <__TEXT_REGION_LENGTH__+0x7f80c0>
+ 1ba:	88 23       	and	r24, r24
+ 1bc:	2c f4       	brge	.+10     	; 0x1c8 <USART_Receive+0x12>
+		data = UDR0;
+ 1be:	80 91 c6 00 	lds	r24, 0x00C6	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7f80c6>
+		flag_rx = 1;
+ 1c2:	81 e0       	ldi	r24, 0x01	; 1
+ 1c4:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__DATA_REGION_ORIGIN__>
+ 1c8:	08 95       	ret
+
+000001ca <main>:
+ISR(TIMER0_COMP_vect);
+
+
+int main(void)
+{
+	init_data();
+ 1ca:	0e 94 7d 00 	call	0xfa	; 0xfa <init_data>
+	init_devices();
+ 1ce:	0e 94 9b 00 	call	0x136	; 0x136 <init_devices>
+	USART_Init(MYUBRR);
+ 1d2:	87 e6       	ldi	r24, 0x67	; 103
+ 1d4:	90 e0       	ldi	r25, 0x00	; 0
+ 1d6:	0e 94 a2 00 	call	0x144	; 0x144 <USART_Init>
+	
+	
+	do
+	{
+		//aprinde_led();
+		aprinde_led_mesaj(); //led rosu
+ 1da:	0e 94 c3 00 	call	0x186	; 0x186 <aprinde_led_mesaj>
+	
+		//data = USART_Receive(); 
+		USART_Receive(data);
+ 1de:	80 91 05 01 	lds	r24, 0x0105	; 0x800105 <data>
+ 1e2:	0e 94 db 00 	call	0x1b6	; 0x1b6 <USART_Receive>
+		
+		verificare_rx(); //verif led galben
+ 1e6:	0e 94 cf 00 	call	0x19e	; 0x19e <verificare_rx>
+ 1ea:	f7 cf       	rjmp	.-18     	; 0x1da <main+0x10>
+
+000001ec <_exit>:
+ 1ec:	f8 94       	cli
+
+000001ee <__stop_program>:
+ 1ee:	ff cf       	rjmp	.-2      	; 0x1ee <__stop_program>
